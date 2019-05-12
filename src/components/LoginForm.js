@@ -4,10 +4,11 @@ import { connect } from "react-redux";
 import { emailChanged } from "../actions";
 
 class LoginForm extends Component {
+    onEmailChange(text) {
+        this.props.emailChanged(text);
+    };
     render() {
-        onEmailChange(text) {
-            this.props.emailChanged(text);
-        };
+        
         return (
             <Card>
                 <CardSection>
