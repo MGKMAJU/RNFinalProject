@@ -5,10 +5,8 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import reducers from './reducers'
 import firebase from "firebase";
-import LoginForm from "./components/LoginForm";
-import EmployeeList from "./components/EmployeeList";
-import { Scene,Router } from
-    "react-native-router-flux";
+import Router from "./router";
+ 
 
 export default class App extends Component {
     componentWillMount() {
@@ -23,30 +21,15 @@ export default class App extends Component {
         });
     }
     render() {
-        const store = createStore(reducers, {},
-            applyMiddleware(ReduxThunk));
+        const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
         return (
             <Provider store={store}>
-               < Router>
-<Scene key="root" hideNavBar>
-                    <Scene key="auth">
-                        <Scene
-                            key="login"
-                            component={LoginForm}
-                            title="Please Login"
-                            initial
-                        />
-                    </Scene>
-                    <Scene key="main">
-                        <Scene
-                            key="employeeList"
-                            component={EmployeeList}
-                            title="Employees"
-                        />
-                    </Scene>
-                </Scene>
-</Router>
-            </Provider >
+                <Router />
+                {/* <LoginForm /> */}
+                {/* <View>
+                <Text>Bismillah Redux Manager Project</Text>
+                </View> */}
+            </Provider>
         );
     }
 }
